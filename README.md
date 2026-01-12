@@ -126,7 +126,7 @@ non_reciprocal <- following %>%
   mutate(jours_anciennete = as.numeric(difftime(now(), timestamp, units = "days")))
 head(non_reciprocal)
 ```
-On procède presque de la même façon mais ici on utilise **anti_join**, donc on demande à R de regarder la liste following et de supprimer tous ceux qui se trouvent aussi dans la liste followers. On obtient uniquement les personnes qui ne nous suivent pas.
+On procède presque de la même façon mais ici on utilise **anti_join**, donc on demande à R de regarder la liste following et de supprimer tous ceux qui se trouvent aussi dans la liste followers. On obtient uniquement les personnes qui ne nous suivent pas. La commande **filter** permet de dire à R qu'on s'intéresse uniquement aux comptes de type "Personnel".
 Dans le bloc **mutate** nous nous servons de **difftime(now(), timestamp, units = "days")** : cette fonction calcule l'écart de temps entre "Maintenant" et le moment où on a suivi la personne et **as.numeric(...)** qui transforme le résultat en un nombre.
 
 ## V. Les désabonnements 
