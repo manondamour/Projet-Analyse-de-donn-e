@@ -26,7 +26,7 @@ tibble(
   follower = "me"
 )
 } %>%
-  mutate(timestamp = str_replace_all(date_raw, mois_fr_en) %>% mdy_hm())
+  mutate(timestamp = str_replace_all(date_raw, mois_fr_an) %>% mdy_hm())
 
 # Importation des abonnés
 followers <- read_html("Analyse de donnée/connections/followers_and_following/followers_1.html") %>% {
@@ -39,7 +39,7 @@ followers <- read_html("Analyse de donnée/connections/followers_and_following/f
     followed = "me"
   )
 } %>%
-  mutate(timestamp = str_replace_all(date_raw, mois_fr_en) %>% mdy_hm())
+  mutate(timestamp = str_replace_all(date_raw, mois_fr_an) %>% mdy_hm())
 
 # Affichage
 head(following)
