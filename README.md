@@ -48,7 +48,7 @@ following <- read_html("Analyse de donnée/connections/followers_and_following/f
     follower = "me"
   )
 } %>%
-  mutate(timestamp = str_replace_all(date_raw, mois_fr_en) %>% mdy_hm()) 
+  mutate(timestamp = str_replace_all(date_raw, mois_fr_an) %>% mdy_hm()) 
 ```
 - **read_html** : permet de charger le fichier
 - **page <- .** : stocke le contenu dans une variable temporaire pour extraire plusieurs éléments à la fois
@@ -70,7 +70,7 @@ followers <- read_html("Analyse de donnée/connections/followers_and_following/f
     followed = "me"
   )
 } %>%
-  mutate(timestamp = str_replace_all(date_raw, mois_fr_en) %>% mdy_hm())
+  mutate(timestamp = str_replace_all(date_raw, mois_fr_an) %>% mdy_hm())
 ```
 La différence ici c'est que dans le fichier followers_1.html, les abonnés sont donnés sous forme de lien, en demandant *.pam a*, on dit à R de récupérer uniquement les noms des utilisateurs qui sont dans la liste centrale et d'ignorer le reste, on obtient ainsi les identifants des abonnés.
 Le reste du code est le même que pour les abonnements
@@ -129,7 +129,7 @@ head(non_reciprocal)
 On procède presque de la même façon mais ici on utilise **anti_join**, donc on demande à R de regarder la liste following et de supprimer tous ceux qui se trouvent aussi dans la liste followers. On obtient uniquement les personnes qui ne nous suivent pas.
 Dans le bloc **mutate** nous nous servons de **difftime(now(), timestamp, units = "days")** : cette fonction calcule l'écart de temps entre "Maintenant" et le moment où on a suivi la personne et **as.numeric(...)** qui transforme le résultat en un nombre.
 
-## V. Surveillance des désabonnements 
+## V. Les désabonnements 
 
 Dans cette section, nous avons importé les données sur les personnes que nous avons nous même unfollow récemment pour ensuite voir si ces personnes nous suivent toujours. 
 Pour l'importation nous procédons de la même manière que pour l'importation des abonnés et abonnements. 
